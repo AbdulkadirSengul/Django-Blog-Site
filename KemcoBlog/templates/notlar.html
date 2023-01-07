@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+          <h3 style="text-align: center;">NOTLAR</h3>
+        </div>
+    </div>
+</div>
+
+{% if notlarr %}
+<div class="container ">
+  <div class="row">
+{% for notlar in notlarr  %}
+<div class="row">
+
+  <div class="col-md-10 offset-md-3">
+    <div class="col-lg-8">
+
+    <h2 class="mt-4"><a href="{% url 'notlar:detailNot' notlar.id %}">{{notlar.title_nt}}</a></h2>
+
+    <p class="lead">
+      {{notlar.author_nt.username}} tarafından yayınlanmıştır.
+    </p>
+
+    <hr>
+    <p>{{notlar.created_date_nt}}</p>
+
+    <hr>
+    {% if notlar.not_image %}
+    <a href="{% url 'notlar:detailNot' notlar.id %}"> <img class="img-fluid rounded" src="{{notlar.not_image.url}}" alt=""></a>
+    {% endif %}
+
+    <hr>
+    <p class="lead">
+      {{notlar.content_nt|safe|truncatewords:50}}
+    </p>
+    <a style="float:right" href="{% url 'notlar:detailNot' notlar.id %}" class="btn btn-danger">Devamını Oku..</a>
+    <hr>
+  </div>
+  </div>
+
+</div>
+
+{% endfor %}
+{% else %}
+<div class="row">
+<div class="col-md-10 offset-md-3">
+    <div class="col-lg-8">
+      <div class="alert alert-danger">Makale bulunamadı.</div>
+    </div>
+</div>
+ 
+
+{% endif %}
+{% endblock  %}
+
+
+
+

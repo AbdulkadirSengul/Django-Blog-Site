@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+<!-- Jumbotron -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img  style="height: 500px;" src="{% static 'img/2.jpg' %}" class="rounded d-block w-100" alt="...">
+        <div class="carousel-caption d-md-block">
+          <h5 class="m-5 p-5 text-center">KEMCO BLOG</h5>
+          <p></p>
+        </div>
+      </div>
+  </div>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <img style="width: 400px; height: 500px;" src="{% static '' %}" alt=""> 
+        </div>
+        <div class="col-md-6 p-5">
+          <p class="text-center ps-4">Yazılım dilleri için tuttuğunuz notları paylaşarak
+            yazılım öğrenmekte olan kişilere destek olun.
+            Bu bloğu herkes için bir el kitabı olarak kullanmasını sağlayın
+            ve İngilizce bilmeyen kişiler için Türkçe kaynaklar oluşturun.</p>
+          
+          </div>
+          </div>
+</div>
+
+
+    <div class="row mt-5">
+        <div class="col-md-6 p-5">
+            Baştan sona yapılan projelerin detaylı anlatımı için 
+            harika bir platform. Yazılımcıların yaptığı projeleri 
+            inceleyerek kendi projelerinizi oluşturun veya deneyimlerinizi
+            paylaşarak yeni yazılımcılara yazılım yönünde ilerlemesi için
+            güzel bir kaynak olun.
+        </div>
+        <div class="col-md-6">
+          <img style="width: 400px; height: 500px;" src="{% static '' %}" alt=""> 
+        </div>
+    </div>
+
+
+{% endblock body %}

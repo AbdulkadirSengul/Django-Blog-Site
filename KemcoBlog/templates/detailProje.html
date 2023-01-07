@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<div class="row">
+ 
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+
+      <!-- Title -->
+      <h3 class="mt-4">{{projeler.title_prj}}</h3>
+
+      <!-- Author -->
+      <p class="lead">
+        by
+        {{projeler.author_prj.username}}
+      </p>
+
+      <hr>
+
+      <!-- Date/Time -->
+      <p>{{projeler.created_date_prj}}</p>
+
+      <hr>
+      {% if projeler.proje_image %}
+      <img class="img-fluid rounded" src="{{projeler.proje_image.url}}" alt="">
+      {% endif %}
+
+      <hr>
+
+      <!-- Post Content -->
+      <p class="lead">
+        {{projeler.content_prj|safe}}
+      </p>
+
+
+{% endblock  %}

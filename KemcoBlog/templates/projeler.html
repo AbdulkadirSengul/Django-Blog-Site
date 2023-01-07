@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+
+<div class="row">
+  <div class="col-md-10 offset-md-3">
+      <div class="col-lg-8">
+        <h3>Projeler</h3>
+      </div>
+      
+  </div>
+</div>
+{% if projelerr %}
+{% for proje in projelerr  %}
+<div class="row">
+
+    <div class="col-md-10 offset-md-3">
+      <div class="col-lg-8">
+
+      <h2 class="mt-4"><a href="{% url 'projeler:detailProje' proje.id %}">{{proje.title_prj}}</a></h2>
+
+      <p class="lead">
+        {{proje.author_prj.username}} tarafından yayınlanmıştır.
+      </p>
+
+      <hr>
+      <p>{{proje.created_date_prj}}</p>
+
+      <hr>
+      {% if proje.proje_image %}
+      <a href="{% url 'projeler:detailProje' proje.id %}"> <img class="img-fluid rounded" src="{{proje.proje_image.url}}" alt=""></a>
+      {% endif %}
+
+      <hr>
+      <p class="lead">
+        {{proje.content_prj|safe|truncatewords:50}}
+      </p>
+      <a style="float:right" href="{% url 'projeler:detailProje' proje.id %}" class="btn btn-danger">Devamını Oku..</a>
+      <hr>
+    </div>
+    </div>
+
+</div>
+
+{% endfor %}
+{% else %}
+<div class="row">
+  <div class="col-md-10 offset-md-3">
+      <div class="col-lg-8">
+        <div class="alert alert-danger">Makale bulunamadı.</div>
+      </div>
+  </div>
+  {% endif %}
+  {% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% block body %}
+
+<h3>Dashboard</h3>
+<hr>
+<p>Hoşgeldiniz, {{request.user.username}}</p>
+<hr>
+<a href="{% url 'projeler:addProje' %}" class="btn btn-danger">Proje Ekle</a>
+<hr>
+{% if projeler %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Tarih</th>
+        <th scope="col">Güncelle</th>
+        <th scope="col">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for proje in projeler %}
+        <tr>
+            <th scope="row">{{proje.id}}</th>
+            <td><a href="{% url 'projeler:detailProje' proje.id %}">{{proje.title_prj}}</a></td>
+            <td>{{proje.author_prj.username}}</td>
+            <td>{{proje.created_date_prj}}</td>
+            <td><a href="{% url 'projeler:updateProje' proje.id %}" class="btn btn-danger">Güncelle</a></td>
+            <td><a href="{% url 'projeler:deleteProje' proje.id %}" class="btn btn-danger">Sil</a></td>
+        </tr>
+        {% endfor %} 
+    </tbody>
+  </table>
+{% else %}
+<div class="alert alert-danger">
+    Henüz bir projeniz yok..
+</div>
+{% endif %}
+
+
+{% endblock  %}

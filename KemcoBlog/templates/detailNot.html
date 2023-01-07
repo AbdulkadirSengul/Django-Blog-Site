@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<div class="row">
+ 
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+
+      <!-- Title -->
+      <h3 class="mt-4">{{notlar.title_nt}}</h3>
+
+      <!-- Author -->
+      <p class="lead">
+        by
+        {{notlar.author_nt.username}}
+      </p>
+
+      <hr>
+
+      <!-- Date/Time -->
+      <p>{{notlar.created_date_nt}}</p>
+
+      <hr>
+      {% if notlar.not_image %}
+      <img class="img-fluid rounded" src="{{notlar.not_image.url}}" alt="">
+      {% endif %}
+
+      <hr>
+
+      <!-- Post Content -->
+      <p class="lead">
+        {{notlar.content_nt|safe}}
+      </p>
+
+
+{% endblock  %}

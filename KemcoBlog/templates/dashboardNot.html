@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% block body %}
+
+<h3>PROFİL</h3>
+<hr>
+<p>Hoşgeldiniz, {{request.user.username}}</p>
+<hr>
+<a href="{% url 'notlar:addNot' %}" class="btn btn-danger">Not Ekle</a>
+<hr>
+{% if notlar %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Tarih</th>
+        <th scope="col">Güncelle</th>
+        <th scope="col">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for notlar in notlar %}
+        <tr>
+            <th scope="row">{{notlar.id}}</th>
+            <td><a href="{% url 'notlar:detailNot' notlar.id %}">{{notlar.title_nt}}</a></td>
+            <td>{{notlar.author_nt.username}}</td>
+            <td>{{notlar.created_date_nt}}</td>
+            <td><a href="{% url 'notlar:updateNot' notlar.id %}" class="btn btn-danger">Güncelle</a></td>
+            <td><a href="{% url 'notlar:deleteNot' notlar.id %}" class="btn btn-danger">Sil</a></td>
+        </tr>
+        {% endfor %} 
+    </tbody>
+  </table>
+{% else %}
+<div class="alert alert-danger">
+    Henüz bir notunuz yok..
+</div>
+{% endif %}
+
+
+{% endblock  %}
